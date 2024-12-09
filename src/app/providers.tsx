@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Provider } from "react-redux";
-import { makeStore } from "../lib/store";
+import { makeStore } from "./../lib/store";
 import { PersistGate } from "redux-persist/integration/react";
 import SpinnerbLoader from "@/components/ui/SpinnerbLoader";
 
@@ -11,7 +11,7 @@ type Props = {
 };
 
 const Providers = ({ children }: Props) => {
-  const { store, persistor } = makeStore();
+  const { store, persister } = makeStore();
 
   return (
     <Provider store={store}>
@@ -21,7 +21,7 @@ const Providers = ({ children }: Props) => {
             <SpinnerbLoader className="w-10 border-2 border-gray-300 border-r-gray-600" />
           </div>
         }
-        persistor={persistor}
+        persistor={persister}
       >
         {children}
       </PersistGate>
